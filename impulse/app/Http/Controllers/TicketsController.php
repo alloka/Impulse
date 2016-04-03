@@ -11,40 +11,20 @@ class TicketsController extends Controller
 
 
 
-	public function create() 
-	{
-        return();
-    }
 
-
-    public function index()
-    {
-    	$tickets = \App\Ticket::all();
-    	return();
-    }
+   
 
 	public function show($id)
     {
-    	$tickets = \App\Ticket::find($id);
-    	return $tickets;
-    	if (is_null($tickets))
-    	{
-    		return();
-    	}
+        $tickets = \App\Ticket::findOrFail($id);
+        return $tickets;
+        return view('tickets.show', compact('ticket'));
+        // if (is_null($tickets))
+        // {
+        //  return();
+        // }
     }
 
-    public function edit($id) 
-    {
-        $ticket = Ticket::findOrFail($id);
-    }
-
-    public function store() 
-    {
-
-    }
-
-    public function destroy($id) {
-        
-    }
+  
 
 }

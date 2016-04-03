@@ -22,7 +22,7 @@ class Ticket extends Model
     protected $ticket_status = ['open', 'pending', 'close', 'solved'];
 
     protected $fillable = [
-        'status',  'priority' , 'open_time' , 'close_time'
+        'status',  'priority' , 'open_time' , 'close_time','title'
     ];
 
     public function support_agent()

@@ -16,6 +16,7 @@ class CreateTicketsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('status');
+            $table->string('title',250);
             $table->integer('priority')->default('1');
             $table->dateTime('open_time');
             $table->dateTime('close_time');

@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::get('ticket/{id}','TicketsController@show');
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', function () {
