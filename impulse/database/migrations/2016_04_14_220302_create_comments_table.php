@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTicketsSuppotAgentsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,24 +12,19 @@ class CreateTicketsSuppotAgentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tickets_support_agents', function (Blueprint $table) {
+            Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('text');
             $table->timestamps();
-            $table->integer('agent_id')->unsigned();
             $table->integer('ticket_id')->unsigned();
-            
-             
+            $table->foreign('ticket_id')
+                  ->references('id')
+                  ->on('tickets');
+            $table->integer('user_id')->unsigned();;
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users');
         });
-
-        Schema::table('tickets_support_agents', function($table) {
-          $table->foreign('ticket_id')
-                  ->references('id')
-                  ->on('tickets'); 
-            $table->foreign('agent_id')
-                  ->references('id')
-                  ->on('support_agents');
-            
-   });
     }
 
     /**
@@ -39,6 +34,6 @@ class CreateTicketsSuppotAgentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tickets_support_agents');
+        Schema::drop('comments');
     }
 }
