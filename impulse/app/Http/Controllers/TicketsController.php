@@ -14,7 +14,7 @@ class TicketsController extends Controller
     }
 
     public function index() {
-        $tickets = Ticket::with('isFrom')->get();
+        $tickets = \App\Ticket::all();
         //return view('tickets.index', compact('tickets'));
     }
 
@@ -25,30 +25,31 @@ class TicketsController extends Controller
 	public function show($id)
     {
         $tickets = \App\Ticket::findOrFail($id);
-        $users = \DB::table('users')->lists('username', 'id');
         //return view('tickets.show', compact('tickets','users'));
     }
 
      public function store(TicketRequest $request) {
         $input = $request->all();
-        $ticket = Ticket::create($input);
+        $ticket = \App\Ticket::create($input);
+         $ticket->save();
        // return redirect('tickets');
     }
 
 
     public function edit($id) {
-        $ticket = Ticket::findOrFail($id);
+        $ticket = \App\Ticket::findOrFail($id);
         //return view('tickets.edit', compact('ticket'));
     }
 
     public function update($id, Request $request) {
-        $ticket = Ticket::findOrFail($id);
+        $ticket = \App\Ticket::findOrFail($id);
         $ticket->update($request->all());
+        $ticket->save();
         //return redirect('tickets');
     }
 
      public function destroy($id) {
-        $data = Ticket::find($id);
+        $data = \App\Ticket::find($id);
         $data->delete();
 
         // redirect
