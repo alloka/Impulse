@@ -25,7 +25,7 @@ class TicketCommentRequest extends Request
     {
         return [
             'text' => 'required',
-            'ticket_id' => 'required',
+            
         ];
     }
 }

@@ -14,7 +14,7 @@ class TicketsController extends Controller
     }
 
     public function index() {
-        $tickets = \App\Ticket::all();
+        $tickets = \App\Ticket::with('comments')->all();
         //return view('tickets.index', compact('tickets'));
     }
 
