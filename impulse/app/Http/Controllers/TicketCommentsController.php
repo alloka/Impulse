@@ -11,7 +11,7 @@ class TicketCommentsController extends Controller
 	public function __construct() {
         $this->middleware('auth');
     }
-    
+
      public function create(Ticket $ticket)	{
         //return view('ticketcomments.create')->with('ticket', $ticket);
     }
@@ -29,6 +29,6 @@ class TicketCommentsController extends Controller
         $data = \App\Comment::find($id);
         $data->delete();
         //Session::flash('message', 'Successfully deleted the ticket!');
-        return Redirect::to('tickets');
+        //return Redirect::to('tickets');
     }
 }
