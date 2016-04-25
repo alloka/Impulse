@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['middleware' => ['web']], function () {
+	Route::get('alloka', 'DashboardController@index');
+Route::resource('tickets', 'TicketsController');
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    
+
 });
