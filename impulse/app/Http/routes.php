@@ -13,5 +13,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('users/', 'UserController@index');
 Route::get('users/newSupportAgent', 'UserController@newSupportAgent');
+Route::post('users', 'UserController@newUser');
+Route::get('users/delete/{id}', 'UserController@deleteUser');
 Route::get('users/{id}', 'UserController@getUser');
+
+Route::group(['middleware' => ['web']], function () {
+	Route::get('alloka', 'DashboardController@index');
+Route::resource('tickets', 'TicketsController');
+   
+    
+});

@@ -7,7 +7,10 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "illuminate/html": "^5.0"
+        "doctrine/dbal": "^2.5",
+        "laravelcollective/html": "^5.2",
+        "illuminate/html": "^5.0",
+        "almasaeed2010/adminlte": "~2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -15,6 +18,7 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*"
+
     },
     "autoload": {
         "classmap": [
@@ -37,15 +41,16 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan clear-compiled",
             "php artisan optimize"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan clear-compiled",
             "php artisan optimize"
         ]
     },
     "config": {
         "preferred-install": "dist"
     }
+
 }

@@ -1,0 +1,102 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px;
+    padding-top: 60px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.footer-text {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.info-box-success {
+    background-color: #5cb85c;
+    font-size: 16px;
+    color: #F5F5F5;
+    margin: 5px;
+    padding: 20px;
+}
+
+.info-box-info {
+    background-color: #5bc0de;
+    font-size: 16px;
+    color: #F5F5F5;
+    margin: 5px;
+    padding: 20px;
+}
+
+.info-box-warning {
+    background-color: #f0ad4e;
+    font-size: 16px;
+    color: #F5F5F5;
+    margin: 5px;
+    padding: 20px;
+}
+
+.info-box-danger {
+    background-color: #d9534f;
+    font-size: 16px;
+    color: #F5F5F5;
+    margin: 5px;
+    padding: 20px;
+}
+
+/*
+    Timeline 
+*/
+
+.timeline > li {
+    list-style-type: none;
+}
+
+.time {
+    float: right;
+    margin: 5px;
+    
+}
+
+.time-label {
+    
+}
+
+.timeline-body {
+    margin: 10px;
+    padding: 5px;
+}
+
+.timeline-footer {
+    margin: 5px;
+    padding: 5px;
+    border-top: 1px solid #ddd;
+}
+
+.timeline-header {
+    margin: 5px;
+    padding: 5px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.timeline-header > p {
+    margin: 5px;
+}
+
+.timeline-item {
+    background-color: #f5f5f5;
+    margin-bottom: 30px;
+    border: 0px 0px 1px 0px solid #ddd; 
+}
