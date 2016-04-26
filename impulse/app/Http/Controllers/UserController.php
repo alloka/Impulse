@@ -60,18 +60,6 @@ class UserController extends Controller
     	return redirect('users'); 
     }
 
-
-     public function editUser(){
-    	$input = Request::All();
-    	$user =User::findOrFail($id);
-    	$user->username = $input['username']; 
-    	$user->email = $input['email']; 
-    	$user->type = $input['type'];
-    	$user->save();
-    	return redirect('users'); 
-    }
-
-
     public function editTicket($id){
     	app('App\Http\Controllers\TicketsContoller')->edit($id);
     }
@@ -121,11 +109,6 @@ class UserController extends Controller
     	$reply->user_id = $input['userId'];
     	$reply->text = $input['text'];
     	$ticketAgent->save();
-    }
-
-
-    public function editTicketStatus($id){
-
     }
 
 }
