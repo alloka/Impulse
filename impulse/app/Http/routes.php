@@ -21,6 +21,7 @@ Route::get('users/{id}', 'UserController@getUser');
 
 Route::group(['middleware' => ['web']], function () {
 	Route::get('alloka', 'DashboardController@index');
+	Route::resource('customers', 'CustomerController');
 Route::resource('tickets', 'TicketsController');
    
     
