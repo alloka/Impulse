@@ -15,6 +15,10 @@ class User extends Authenticatable
         'username', 'email', 'password', 'type'
     ];
 
+    public function tickets(){
+        return $this->hasMany('App\Ticket');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

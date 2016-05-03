@@ -6,6 +6,7 @@ use Request;
 
 use App\Http\Requests;
 use App\Ticket;
+use App\Customer;
 
 class TicketsController extends Controller
 {
@@ -15,12 +16,13 @@ class TicketsController extends Controller
    // }
 
     public function index() {
-        $tickets = Ticket::with('comments')->all();
+        $tickets = Ticket::all();
         return view('tickets.index', compact('tickets'));
     }
 
     public function create() {
-        return view('tickets.create');
+        $clients = Customer::lists("username",'id');
+        return view('tickets.create',compact('clients'));
     }
 
 	public function show($id)
@@ -31,11 +33,9 @@ class TicketsController extends Controller
 
      public function store() {
         $input = Request::all();
-        //return $input;
+        $input["status"] = 0;
         Ticket::create($input);
-
-         $ticket->save();
-        return redirect('tickets');
+        return redirect()->route("tickets.index");
     }
 
     public function editStatus($id) {
@@ -70,6 +70,7 @@ class TicketsController extends Controller
     }
 
      public function destroy($id) {
+        dd("adeek");
         $data = Ticket::find($id);
         $data->delete();
 
@@ -77,5 +78,7 @@ class TicketsController extends Controller
         //Session::flash('message', 'Successfully deleted the ticket!');
         return Redirect::to('tickets');
     }
+
+
 
 }

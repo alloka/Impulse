@@ -22,7 +22,7 @@
             <!-- Title -->
             <td>
                 <div class="text-left">
-                    <a href="{{ action('TicketController@show', $item->id ) }}"> {{ $item->title }}</a> 
+                    <a href="{{ action('TicketsController@show', $item->id ) }}"> {{ $item->title }}</a> 
                 </div>
             </td>
             <!-- Create -->
@@ -31,18 +31,18 @@
             </td>
             <!-- Owner -->
             <td>
-                @if ($item->assignedTo == null )
+                @if ($item->support_agent()->get()->first() == null )
                 <h5>unassigned</h5>
                 @else
-                <h5>{{ $item->assignedTo->name }}</h5>
+                <h5>{{ $item->support_agent()->get()->first()->username }}</h5>
                 @endif
             </td>
             <!-- Client -->
             <td>
-                @if ( $item->isFrom == null )
+                @if ( $item->customer() == null )
                 <h5>unassigned</h5>
                 @else
-                <h5>{{ $item->isFrom->name }}</h5>
+                <h5>{{ $item->customer()->get()->first()->username }}</h5>
                 @endif
             </td>
             <td>

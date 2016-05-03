@@ -5,11 +5,7 @@
 <div class="row">
     <div class="col-md-8">
         <ul class="timeline">
-            <li>
-                <p>Ticket created {{$ticket->created_at->toFormattedDateString() }}</p>
-                    
-              
-            </li>
+            
             @foreach ( $ticket->comments as $comment )
             <li>
                 <div class="timeline-item">
@@ -37,7 +33,7 @@
         <!-- Editor -->
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Commet Ticket</h3>
+                <h3 class="box-title">Comment Ticket</h3>
             </div><!-- /.box-header -->
             <div class="box-body pad">
 
