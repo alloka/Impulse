@@ -10,9 +10,15 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('tweets', function()
+// {
+//     return Twitter::getHomeTimeline(['count' => 1, 'format' => 'json']);
+// });
+Route::get('tweets', 'TwitterController@index');
 Route::get('users/', 'UserController@index');
 Route::get('users/newSupportAgent', 'UserController@newSupportAgent');
 Route::post('users', 'UserController@newUser');
@@ -21,7 +27,5 @@ Route::get('users/{id}', 'UserController@getUser');
 
 Route::group(['middleware' => ['web']], function () {
 	Route::get('alloka', 'DashboardController@index');
-Route::resource('tickets', 'TicketsController');
-   
-    
+	Route::resource('tickets', 'TicketsController');     
 });
