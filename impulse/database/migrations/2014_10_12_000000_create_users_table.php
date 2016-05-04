@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('type');
             $table->rememberToken();
             $table->timestamps();
-            $table->integer('supervisor_id')->unsigned(); 
+            $table->integer('supervisor_id')->unsigned()->nullable(); 
             $table->foreign('supervisor_id')
                   ->references('id')
                   ->on('users');

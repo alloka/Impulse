@@ -8,6 +8,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\User; 
 use Request;
+use App\Ticket;
+use App\TicketAgent;
 
 class UserController extends Controller
 {
@@ -91,13 +93,14 @@ class UserController extends Controller
 
     public function claimTicket(){
     	$input= Request::All(); 
-    	$user = User::findOrFail($input['userId']); 
     	$ticket = Ticket::findOrFail($input['ticketId']); 
     	$ticketAgent = new TicketAgent; 
-    	$ticketAgent->ticket_id = $input['userId'];
-    	$ticketAgent->user_id = $input['userId'];
+    	$ticketAgent->ticket_id = $ticket->id;
+        $ticketAgent->user_id = 1;
+    	//$ticketAgent->user_id = Auth::user()->id;
     	$ticketAgent->notify =0; 
     	$ticketAgent->save();
+        return redirect()->back();
     }
 
       public function replyTicket(){

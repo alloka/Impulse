@@ -14,6 +14,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Route::resource('payment', 'PaypalPaymentController');
+Route::post("users/claimTicket", 'UserController@claimTicket');
 Route::get('users/', 'UserController@index');
 Route::get('users/newSupportAgent', 'UserController@newSupportAgent');
 Route::post('users', 'UserController@newUser');

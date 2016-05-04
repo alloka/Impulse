@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Ticket;
 use App\Customer;
 use App\Comment;
+use App\TicketStatus;
 
 class TicketsController extends Controller
 {
@@ -34,8 +35,10 @@ class TicketsController extends Controller
 
      public function store() {
         $input = Request::all();
-        $input["status"] = 0;
-        Ticket::create($input);
+        $input["status"] = TicketStatus::open;
+        $ticket = Ticket::create($input);
+        $ticket->text = $input["text"];
+        $ticket->save();
         return redirect()->route("tickets.index");
     }
 
@@ -78,8 +81,12 @@ class TicketsController extends Controller
         return redirect(action("TicketsController@index"));
     }
 
-    public function close(Request $request){
-
+    public function close(){
+        $request = Request::all();
+        $ticket = Ticket::find($request["ticket"]);
+        $ticket->status = TicketStatus::close;
+        $ticket->save();
+        return redirect()->back();
     }
 
     public function addComment(){
@@ -87,6 +94,7 @@ class TicketsController extends Controller
         $ticket = Ticket::find($request["ticket"]);
         $comment = new Comment(["text" => $request["text"]]);
         $comment->user_id = 1;
+        //$comment->user_id = Auth::user()->id;
         $comment->ticket_id = $ticket->id;
         $comment->save();
         return redirect()->back();

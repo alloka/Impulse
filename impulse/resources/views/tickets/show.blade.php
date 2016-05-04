@@ -21,6 +21,17 @@
             <div>
                 Priority: {{$ticket->getPriority()}}
             </div>
+            <h3>
+                Ticket Assigned to :
+            </h3>
+            <div>
+                @forelse($ticket->support_agent()->get() as $agent)
+                {{$agent->support_agent->get()->first()->username}}
+                <br/>
+                @empty
+                <h4>This ticket is not assigned to any agent.</h4>
+                @endforelse
+            </div>
             <h3> Comments </h3>
             @forelse ($comments as $comment)
             <div>
@@ -32,7 +43,7 @@
             <h2>No comments for this ticket</h2>
             @endforelse
         </div>
-        <h1> Create ticket </h1>
+        <h1> Add Comment </h1>
     <!-- left nav -->
   
         <div class="form-group">
