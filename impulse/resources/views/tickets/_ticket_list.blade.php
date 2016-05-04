@@ -52,8 +52,9 @@
                 <h5>{{ $item->getTicketStatus() }}</h5>
             </td>
             <td>
-                {!! Form::open(['method' => 'DELETE','action' => ['TicketsController@destroy',$item->id]]) !!}
+                {!! Form::open(['method' => 'DELETE','action' => ['TicketsController@destroy', $item->id]]) !!}
                  {!! Form::submit("Delete",['class' => "btn btn-primary", 'role' => 'button']) !!}
+                 {!! Form::hidden('ticket',$item->id) !!}
                  {!! Form::close() !!}
             </td>
             <td>
@@ -65,8 +66,8 @@
                  @endif
             </td>
             <td>
-                @if($item->support_agent()->get())
-                {{$item->support_agent()->get()->first()->support_agent()->get()->first()->username}}
+                @if($item->support_agent()->get()->count() >= 3)
+                Assigned to max number of agents
                 @else
                 {!! Form::open(['method' => 'POST','action' => ['UserController@claimTicket']]) !!}
                  {!! Form::submit("Claim Ticket",['class' => "btn btn-primary", 'role' => 'button']) !!}

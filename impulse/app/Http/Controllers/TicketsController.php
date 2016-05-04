@@ -9,6 +9,8 @@ use App\Ticket;
 use App\Customer;
 use App\Comment;
 use App\TicketStatus;
+use App\TicketAgent;
+
 
 class TicketsController extends Controller
 {
@@ -73,15 +75,27 @@ class TicketsController extends Controller
         return redirect('tickets');
     }
 
-     public function destroy($id) {
-        $ticket = Ticket::find(Request::all()["ticket"]);
-        Ticket::destroy($ticket->id);
+     public function destroy() {
+        //dd(Request::All());
+        //$ticket = Ticket::find(Request::"ticket"]);
+        //dd($ticket);
+        $request = Request::all();
+
+       TicketAgent::where('ticket_id',$request["ticket"])->delete();
+       Comment::where('ticket_id',$request["ticket"])->delete();
+
+      // dd($array);
+        Ticket::find($request["ticket"])->delete();
+         
+        //Ticket::->destroy($ticket);
+        //Ticket::destroy($ticket);
         // redirect
         //Session::flash('message', 'Successfully deleted the ticket!');
         return redirect(action("TicketsController@index"));
     }
 
     public function close(){
+          dd(Request::All());
         $request = Request::all();
         $ticket = Ticket::find($request["ticket"]);
         $ticket->status = TicketStatus::close;
@@ -93,6 +107,7 @@ class TicketsController extends Controller
         $request = Request::all();
         $ticket = Ticket::find($request["ticket"]);
         $comment = new Comment(["text" => $request["text"]]);
+        echo $ticket;
         $comment->user_id = 1;
         //$comment->user_id = Auth::user()->id;
         $comment->ticket_id = $ticket->id;
