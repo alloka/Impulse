@@ -13,7 +13,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('payment', 'PaypalPaymentController');
+//Route::resource('payment', 'PaypalPaymentController');
 Route::get('users/', 'UserController@index');
 Route::get('users/newSupportAgent', 'UserController@newSupportAgent');
 Route::post('users', 'UserController@newUser');
@@ -23,7 +23,8 @@ Route::get('users/{id}', 'UserController@getUser');
 Route::group(['middleware' => ['web']], function () {
 	Route::get('alloka', 'DashboardController@index');
 	Route::resource('customers', 'CustomerController');
+	Route::post('tickets/close','TicketsController@close');
 Route::resource('tickets', 'TicketsController');
-
+Route::post('tickest/addComment','TicketsController@addComment');
     
 });

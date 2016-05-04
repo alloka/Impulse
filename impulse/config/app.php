@@ -148,7 +148,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -207,7 +206,6 @@ return [
 
               'Html' => Collective\Html\HtmlFacade::class,
               'Input' => Illuminate\Support\Facades\Input::class,
-              'Paypalpayment'   => Anouar\Paypalpayment\Facades\PaypalPayment::class,
 
     ],
 

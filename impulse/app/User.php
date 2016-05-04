@@ -19,6 +19,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Ticket');
     }
 
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -8,12 +8,13 @@
             <li>Tickets</li>
         </ol>
     </h4>
-    <a href="{{ action('TicketsController@create') }}" class="btn btn-primary" role="button">New</a>
-    <a href="{{route('tickets.destroy',[6])}}" class="btn btn-primary" role="button">Delete</a>
-    <a href="#" class="btn btn-primary" role="button">Close</a>
-    <a href="#" class="btn btn-primary" role="button">Assigned to</a>
-
+    {!! Form::open(['method' => 'GET','action' => ['TicketsController@create']]) !!}
+    {!! Form::submit("New",['class' => "btn btn-primary", 'role' => 'button']) !!}
+    {!! Form::close()!!}
+    {!! Form::open(['method' => 'DELETE','action' => ['TicketsController@destroy',0]]) !!}
+    {!! Form::submit("Delete",['class' => "btn btn-primary", 'role' => 'button']) !!}
     <hr/>
     @include('tickets._ticket_list', [ 'collection' => $tickets ] )
+    {!! Form::close() !!}
 </div>
 @stop  

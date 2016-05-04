@@ -17,7 +17,7 @@
         <tr>
             <!-- Select -->
             <td>
-                <input type="checkbox" name="option" value="Selected"> 
+                {{ Form::radio('ticket', $item->id) }} 
             </td>
             <!-- Title -->
             <td>

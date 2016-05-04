@@ -7,6 +7,7 @@ use Request;
 use App\Http\Requests;
 use App\Ticket;
 use App\Customer;
+use App\Comment;
 
 class TicketsController extends Controller
 {
@@ -28,7 +29,7 @@ class TicketsController extends Controller
 	public function show($id)
     {
         $ticket = Ticket::find($id);
-        return view('tickets.show', compact('ticket','users'));
+        return view('tickets.show', compact('ticket'));
     }
 
      public function store() {
@@ -70,13 +71,26 @@ class TicketsController extends Controller
     }
 
      public function destroy($id) {
-        dd("adeek");
-        $data = Ticket::find($id);
-        $data->delete();
-
+        $ticket = Ticket::find(Request::all()["ticket"]);
+        Ticket::destroy($ticket->id);
         // redirect
         //Session::flash('message', 'Successfully deleted the ticket!');
-        return Redirect::to('tickets');
+        return redirect(action("TicketsController@index"));
+    }
+
+    public function close(Request $request){
+
+    }
+
+    public function addComment(){
+        $request = Request::all();
+        $ticket = Ticket::find($request["ticket"]);
+        $comment = new Comment(["text" => $request["text"]]);
+        $comment->user_id = 1;
+        $comment->ticket_id = $ticket->id;
+        $comment->save();
+        return redirect()->back();
+
     }
 
 
