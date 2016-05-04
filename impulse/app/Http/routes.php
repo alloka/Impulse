@@ -18,7 +18,9 @@
 // {
 //     return Twitter::getHomeTimeline(['count' => 1, 'format' => 'json']);
 // });
+
 Route::get('tweets', 'TwitterController@index');
+Route::get('tweets/mark', 'TwitterController@markTweet');
 Route::get('users/', 'UserController@index');
 Route::get('users/newSupportAgent', 'UserController@newSupportAgent');
 Route::post('users', 'UserController@newUser');
