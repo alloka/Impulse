@@ -86,11 +86,6 @@ class TicketsController extends Controller
 
       // dd($array);
         Ticket::find($request["ticket"])->delete();
-         
-        //Ticket::->destroy($ticket);
-        //Ticket::destroy($ticket);
-        // redirect
-        //Session::flash('message', 'Successfully deleted the ticket!');
         return redirect(action("TicketsController@index"));
     }
 

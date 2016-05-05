@@ -31,7 +31,9 @@
             <!-- Owner -->
             <td>
                 @if ($item->support_agent()->get()->first() == null )
+                <div class="info-box-danger">
                 <h5>unassigned</h5>
+            </div>
                 @else
                 <h5>{{ $item->support_agent()->get()->first()->username }}</h5>
                 @endif

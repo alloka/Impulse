@@ -11,7 +11,7 @@
         "laravelcollective/html": "^5.2",
         "illuminate/html": "^5.0",
         "almasaeed2010/adminlte": "~2.3",
-        "anouar/paypalpayment": "~1.0"
+        "paypal/rest-api-sdk-php": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

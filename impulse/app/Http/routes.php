@@ -29,3 +29,5 @@ Route::resource('tickets', 'TicketsController');
 Route::post('tickest/addComment','TicketsController@addComment');
     
 });
+Route::get('/paypal', 'GenLinkPaypalController@handleTransaction');
+Route::get('/genlink', 'GenLinkPaypalController@generateLink');
