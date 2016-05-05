@@ -22,6 +22,7 @@ class CreateTicketAgentTable extends Migration
                   ->references('id')
                   ->on('users');
             $table->integer('notify');
+            $table->timestamps();
         });
     }
 

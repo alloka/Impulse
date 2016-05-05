@@ -13,15 +13,32 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('users/', 'UserController@index');
-Route::get('users/newSupportAgent', 'UserController@newSupportAgent');
-Route::post('users', 'UserController@newUser');
-Route::get('users/delete/{id}', 'UserController@deleteUser');
-Route::get('users/{id}', 'UserController@getUser');
+//Route::resource('payment', 'PaypalPaymentController');
 
-Route::group(['middleware' => ['web']], function () {
-	Route::get('alloka', 'DashboardController@index');
-Route::resource('tickets', 'TicketsController');
-   
-    
+Route::group(['middleware' => ['web','auth','supervisorAdmin']], function () {
+	    Route::resource('users/{id}/edit?', 'UserController@editUser');
 });
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+	Route::get('alloka', 'DashboardController@index');
+	Route::resource('customers', 'CustomerController');
+	Route::post('tickets/close','TicketsController@close');
+	Route::resource('tickets', 'TicketsController');
+	Route::resource('users', 'UserController');
+	Route::post('tickest/addComment','TicketsController@addComment');
+	Route::get('auth/login', 'AuthController@getLogin');
+	Route::post('auth/login', 'AuthController@postLogin');
+	Route::get('auth/logout', 'AuthController@getLogout');
+	Route::post("users/claimTicket", 'UserController@claimTicket');
+	Route::post("users/assignTicket", 'UserController@assignTicket');
+	Route::resource("users/assign/{ticket_id}", 'UserController@assign');
+	Route::get('users/', 'UserController@index');
+	Route::get('users/newSupportAgent', 'UserController@newSupportAgent');
+	Route::post('users', 'UserController@newUser');
+	Route::get('users/delete/{id}', 'UserController@deleteUser');
+	Route::get('users/{id}', 'UserController@getUser');
+	Route::resource('users/editUser/{id}', 'UserController@editUser');
+
+
+});
+

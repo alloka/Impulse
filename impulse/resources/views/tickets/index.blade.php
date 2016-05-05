@@ -8,24 +8,10 @@
             <li>Tickets</li>
         </ol>
     </h4>
-    <a href="{{ action('TicketController@create') }}" class="btn btn-primary" role="button">New</a>
-    <a href="#" class="btn btn-primary" role="button">Merge</a>
-    <a href="#" class="btn btn-primary" role="button">Delete</a>
-    <a href="#" class="btn btn-primary" role="button">Close</a>
-    <a href="#" class="btn btn-primary" role="button">Assigned to</a>
-
+    {!! Form::open(['method' => 'GET','action' => ['TicketsController@create']]) !!}
+    {!! Form::submit("New Ticket",['class' => "btn btn-primary", 'role' => 'button']) !!}
+    {!! Form::close()!!}
     <hr/>
-
     @include('tickets._ticket_list', [ 'collection' => $tickets ] )
 </div>
-@stop   
-
-@section('script')
-
-<script>
-    $(document).ready(function () {
-        $("#tickets").dataTable();
-    });
-</script>
-
-@stop
+@stop  

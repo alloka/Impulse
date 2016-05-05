@@ -17,7 +17,7 @@ class Comment extends Model
 
         public function support_agent()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\User','user_id');
     }
 
     public function customer()

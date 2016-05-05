@@ -22,7 +22,8 @@
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li class="{{ Request::is('tickets*') ? 'active' : '' }}"><a href="/tickets">Tickets</a></li>
-                                <li class="{{ Request::is('clients*') ? 'active' : '' }}"><a href="/clients">Clients</a></li>
+                                <li class="{{ Request::is('customers*') ? 'active' : '' }}"><a href="/customers">Customers</a></li>
+                                <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="/users">Users</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 @if (Auth::guest())

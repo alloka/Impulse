@@ -13,6 +13,14 @@
 		{!! Form::label('email', 'Email:') !!}
 		{!! Form::text('email', null, ['class' => 'form-control']) !!}
 	</div>
+	<div class = "form-group">
+		{!! Form::label('password', 'Password:') !!}
+		{!! Form::text('password', null, ['class' => 'form-control']) !!}
+	</div>
+	<div class = "form-group">
+		{!! Form::label('supervisor', 'Supervisor:') !!}
+		{!! Form::text('supervisor', null, ['class' => 'form-control']) !!}
+	</div>
 
 		<div class = "form-group">
 		{{ Form::select('type', [

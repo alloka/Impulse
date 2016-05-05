@@ -22,12 +22,12 @@ class Ticket extends Model
     protected $ticket_status = ['open', 'pending', 'close', 'solved'];
 
     protected $fillable = [
-        'status',  'priority' ,  'text','title'
+        'status',  'priority' ,  'text','title' ,'customer_id'
     ];
 
     public function support_agent()
     {
-    	return $this->belongsToMany('App\User');
+    	return $this->hasMany('App\TicketAgent');
     }
 
     public function customer()
